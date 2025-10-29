@@ -1,0 +1,157 @@
+/**
+ * Ionic Global Styles
+ * 
+ * Custom styles for desktop-optimized Ionic application
+ */
+
+/* Prevent overscroll and ensure proper layout */
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  background-color: var(--ion-background-color);
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  --default-item-height: 60px;
+}
+
+/* Custom scrollbar styles */
+* {
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+ion-item {
+  height: var(--default-item-height);
+}
+
+/* Tab Bar - Default (bottom) on mobile */
+ion-tab-bar {
+  --border: 1px solid var(--ion-border-color, rgba(0, 0, 0, 0.12));
+  border-top: var(--border);
+  --background: var(--ion-background-color);
+}
+
+ion-tab-button {
+  --color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.4);
+  --color-selected: var(--ion-color-primary);
+  --padding-top: 4px;
+  --padding-bottom: 4px;
+}
+
+ion-tab-button ion-icon {
+  font-size: 24px;
+}
+
+ion-tab-button ion-label {
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+ion-tab-button.tab-selected ion-label {
+  font-weight: 600;
+}
+
+/* Desktop: Side tab bar (left side) */
+@media (min-width: 768px) {
+  ion-tab-bar.tab-bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 88px;
+    height: 100vh;
+    max-height: 100vh;
+    flex-direction: column;
+    border-top: none;
+    border-right: 1px solid var(--ion-border-color, rgba(0, 0, 0, 0.12));
+    justify-content: flex-start;
+    align-items: stretch;
+    padding-top: 0;
+    padding-bottom: 0;
+    z-index: 10;
+    overflow-y: auto;
+    background-color: var(--ion-background-color);
+  }
+
+  ion-tabs {
+    display: flex;
+    background-color: var(--ion-background-color);
+  }
+
+  ion-router-outlet {
+    margin-left: 88px;
+    width: calc(100% - 88px);
+  }
+
+  ion-tab-button {
+    flex: 0 0 auto;
+    flex-direction: column;
+    height: 72px;
+    min-height: 72px;
+    max-height: 72px;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+  }
+
+  ion-tab-button ion-icon {
+    margin-bottom: 2px;
+  }
+
+  ion-tab-button ion-label {
+    margin-top: 2px;
+  }
+
+  /* Wider layouts for desktop */
+  ion-toolbar {
+    --min-height: 56px;
+  }
+
+  /* Need to use this trick to fix the left alignment of the input inside the searchbar 
+   when the searchbar is inside a "slot=end" buttons container. The real case in this app
+   is the in-page searchbar in the ContentView. */
+  ion-searchbar input {
+    text-align: left !important;
+  }
+}
+
+/* Error dialog styling */
+.error-dialog {
+  --width: 400px;
+  --max-width: 90vw;
+}
+
+.error-dialog ion-toolbar {
+  --background: var(--ion-color-danger);
+  --color: var(--ion-color-danger-contrast);
+}

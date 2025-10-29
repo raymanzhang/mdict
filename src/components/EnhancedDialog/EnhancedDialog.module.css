@@ -1,0 +1,100 @@
+/**
+ * Enhanced Dialog Styles
+ */
+
+/* Overlay backdrop */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 16px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Main dialog container */
+.dialog {
+  background-color: var(--ion-background-color, #fff);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  max-width: 90vw;
+  max-height: 90vh;
+  min-width: 300px;
+  width: fit-content;
+  overflow: hidden;
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* Dialog content area */
+.content {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 20px 24px;
+  color: var(--ion-text-color);
+  min-height: 0;
+}
+
+/* Footer with buttons */
+.footer {
+  flex-shrink: 0;
+}
+
+/* Button container */
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px 16px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .dialog {
+    min-width: 400px;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  .dialog {
+    min-width: 280px;
+    max-width: 95vw;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .dialog {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+}
+
