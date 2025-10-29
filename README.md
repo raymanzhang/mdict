@@ -1,0 +1,2 @@
+# mdict
+The MDict App
