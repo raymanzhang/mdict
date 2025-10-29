@@ -9,7 +9,6 @@ import {
   IonSearchbar,
 } from '@ionic/react';
 import {
-  volumeHighOutline,
   heart,
   heartOutline,
   libraryOutline,
@@ -66,7 +65,6 @@ export const ContentView = forwardRef<ContentViewRef, ContentViewProps>(({
   const [profileMenuAnchorEl, setProfileMenuAnchorEl] = useState<HTMLElement | null>(null);
   const [inPageSearchTerm, setInPageSearchTerm] = useState('');
   const [highlight, setHighlight] = useState('');
-  const [showPronunciationButton, setShowPronunciationButton] = useState(false);
   const [showFavoriteButton, setShowFavoriteButton] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
   const [hasNextMatchAvailable, setHasNextMatchAvailable] = useState(false);
@@ -86,7 +84,6 @@ export const ContentView = forwardRef<ContentViewRef, ContentViewProps>(({
   // Control button visibility based on content availability
   useEffect(() => {
     if (currentMdxGroupIndexes.length > 0) {
-      setShowPronunciationButton(true);
       setShowFavoriteButton(true);
       
       // Check if current entry is favorited
@@ -97,7 +94,6 @@ export const ContentView = forwardRef<ContentViewRef, ContentViewProps>(({
         setIsFavorited(favorited);
       }
     } else {
-      setShowPronunciationButton(false);
       setShowFavoriteButton(false);
     }
   }, [currentMdxGroupIndexes, dbProfile, checkIsFavorited]);
@@ -236,13 +232,6 @@ export const ContentView = forwardRef<ContentViewRef, ContentViewProps>(({
       });
     }
   }, [updateMatchNavigationStates]);
-
-  const handlePronunciation = useCallback(() => {
-    if (currentMdxGroupIndexes.length > 0) {
-      // const firstEntry = currentMdxGroupIndexes[0].indexes[0];
-      // TODO use TTS to play pronunciation
-    }
-  }, [currentMdxGroupIndexes]);
 
   const handleFavoriteToggle = useCallback(async () => {
     if (currentMdxGroupIndexes.length > 0 && dbProfile) {

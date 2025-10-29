@@ -56,7 +56,6 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
     setAutoLookupClipboard,
     setAutoLookupSelection,
     setHotkey,
-    setUsePopoverForLookup,
     setGuiLanguage,
     setAppearanceMode,
     setThemePreset,
