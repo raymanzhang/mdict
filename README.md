@@ -5,8 +5,11 @@
 
 ```
 git clone https://github.com/raymanzhang/mdx.git
+mkdir mdictx
+cd mdictx
 git clone https://github.com/raymanzhang/mdict.git
 git clone https://github.com/raymanzhang/mdx_util.git #可选
-cd mdict
+cd ../mdict
+npm install
 npm run tauri dev
 ```
